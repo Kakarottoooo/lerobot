@@ -1,0 +1,46 @@
+{
+  "env": {
+    "name": "dual_so101",
+    "task": "DualSO101PickCube-v0",
+    "fps": 10,
+    "processor": {
+      "control_mode": "ee_delta",
+      "gripper": {
+        "use_gripper": true,
+        "gripper_penalty": -0.02
+      },
+      "reset": {
+        "fixed_reset_joint_positions": {
+          "arm0": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+          "arm1": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        },
+        "reset_time_s": 2.0,
+        "control_time_s": 15.0,
+        "terminate_on_success": true
+      },
+      "inverse_kinematics": {
+        "end_effector_step_sizes": {
+          "x": 0.02,
+          "y": 0.02,
+          "z": 0.02
+        }
+      }
+    }
+  },
+  "dataset": {
+    "repo_id": null,
+    "root": "outputs/dual_so101_recordings",
+    "task": "dual_so101_pick_cube",
+    "push_to_hub": false
+  },
+  "device": "cuda",
+  "comments": {
+    "note": "This is a template config. You may need to adjust based on your SO-101 model structure.",
+    "arm_joints": "Each SO-101 arm has 6 joints (5 arm + 1 gripper)",
+    "next_steps": [
+      "1. Clone lerobot-kinematics to get SO-101 MJCF model",
+      "2. Create dual_so101_scene.xml with two arms",
+      "3. Adjust joint positions based on your calibration"
+    ]
+  }
+}
